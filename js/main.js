@@ -44,7 +44,10 @@ const searchDelayEls = [...searchWrapEl.querySelectorAll('li')]
 const duration = .4 // seconds
 
 searchStarterEl.addEventListener('click', showSearch)
-searchCloseerEl.addEventListener('click', hideSearch)
+searchCloseerEl.addEventListener('click', event => {
+  event.stopPropagation() // 이 클릭 이벤트가 버블링되어 textFieldEl가 클릭되는 것(모바일)을 방지
+  hideSearch()
+})
 searchShadowEl.addEventListener('click', hideSearch)
 
 function showSearch() {
@@ -55,9 +58,10 @@ function showSearch() {
   searchDelayEls.forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / searchDelayEls.length}s`
   })
+  // 검색 인풋 요소가 나타난 후 동작!
   setTimeout(() => {
     textFieldInputEl.focus()
-  }, 600); // 검색 인풋 요소가 나타난 후 동작!
+  }, 600);
   stopScroll()
 }
 function hideSearch() {
@@ -80,7 +84,7 @@ function stopScroll() {
 }
 
 
-// 헤더 모바일 검색!
+// 헤더 검색 모바일!
 textFieldEl.addEventListener('click', () => {
   headerEl.classList.add('searching--mobile')
   textFieldInputEl.focus()
