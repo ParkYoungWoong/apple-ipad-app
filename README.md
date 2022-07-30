@@ -6,7 +6,7 @@
 
 [DEMO](https://transcendent-naiad-733465.netlify.app/)
 
-[Screenshots](./images/screenshot1.jpg)
+![Screenshots](./images/screenshot1.jpg)
 
 ### iPad 종류
 
