@@ -35,7 +35,7 @@ p {
   line-height: 1.6;
 }
 
-/* INNER */
+/* Inner */
 .inner {
   max-width: 980px;
   margin: auto;
@@ -60,7 +60,7 @@ p {
 }
 
 
-/* BTN */
+/* Btn */
 button.btn {
   display: flex;
   justify-content: center;
@@ -84,7 +84,7 @@ button.btn:focus {
 }
 
 
-/* LINKS */
+/* Links */
 .links {
   display: flex;
   justify-content: center;
@@ -115,7 +115,14 @@ a.link::after {
 }
 
 
-/* FEATURE */
+/* Footnote */
+sup {
+  margin-right: 6px;
+  font-size: .7em;
+  vertical-align: top;
+}
+
+/* Feature */
 .feature {
   display: flex;
 }
@@ -214,7 +221,7 @@ a.link::after {
   font-weight: 600;
   line-height: 1.5;
 }
-.info a {
+.info a.link {
   display: block;
   margin-top: 44px;
   font-size: 19.5px;
@@ -740,7 +747,7 @@ header.searching .search .autocompletes li {
 }
 
 
-/* NAVIGATION */
+/* Navigation */
 nav {
   --nav-height: 52px;
   border-bottom: 1px solid var(--color-border);
