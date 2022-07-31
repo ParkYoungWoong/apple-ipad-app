@@ -169,7 +169,7 @@ a.link::after {
   justify-content: center;
 }
 .infos.infos--end {
-  justify-content: end;
+  justify-content: flex-end;
 }
 .info {
   max-width: 330px;
@@ -1699,7 +1699,7 @@ main {
 }
 .ipados .infos {
   margin-top: 44px;
-  align-items: end;
+  align-items: flex-end;
 }
 .ipados .figures {
   display: flex;
@@ -2046,7 +2046,7 @@ main {
 }
 .privacy .infos {
   margin-top: 38px;
-  align-items: end;
+  align-items: flex-end;
   position: relative;
   z-index: 1;
 }
@@ -2301,7 +2301,7 @@ main {
   margin-bottom: 22px;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
 }
 .compare .item ul.colors {
   margin-bottom: 30px;
