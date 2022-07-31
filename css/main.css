@@ -17,13 +17,13 @@ html {
   --color-shadow: rgba(0, 0, 0, .4);
 }
 body {
-  color: var(--color-font-primary);
+  color: var(--color-font);
   font-size: 16px;
   line-height: 1;
   word-break: keep-all;
 }
 a {
-  color: var(--color-font-primary);
+  color: var(--color-font);
   text-decoration: none;
 }
 img {
@@ -166,7 +166,7 @@ a.link::after {
   flex-direction: column;
 }
 .infos.infos--center {
-  justify-content: center;  
+  justify-content: center;
 }
 .infos.infos--end {
   justify-content: end;
@@ -319,7 +319,7 @@ header .inner {
   height: var(--header-height);
 }
 header .mobile-layout {
-  display: none; 
+  display: none;
 }
 
 /* Header / Menu */
@@ -784,7 +784,7 @@ nav .inner {
 nav h1 {
   flex-grow: 1;
   font-size: 22px;
-  font-weight: 500; 
+  font-weight: 500;
 }
 nav .menu-toggler {
   display: none;
@@ -902,7 +902,7 @@ nav .menu li a.active:hover {
 
 /* Main wrapper */
 main {
-  overflow-x: hidden;  
+  overflow-x: hidden;
 }
 
 
@@ -1166,7 +1166,7 @@ main {
     height: auto;
     margin-top: 30px;
   }
-  .power .arcade .figures { 
+  .power .arcade .figures {
     margin-top: 20px;
     order: 1;
   }
@@ -1183,7 +1183,7 @@ main {
     height: auto;
     margin-top: 30px;
   }
-  .power .create .figures { 
+  .power .create .figures {
     margin-top: 20px;
   }
   .power .create figure {
@@ -2576,8 +2576,8 @@ footer .legal ul li:hover a {
   footer .navigations .map ul {
     height: 0;
     overflow: hidden;
-    transition: 
-      transform .6s, 
+    transition:
+      transform .6s,
       opacity .4s;
     transform: translate(0, -20px);
     opacity: 0;
@@ -2609,72 +2609,72 @@ footer .legal ul li:hover a {
   3.32% { background-position: -200px 0 }
   4.98% { background-position: -300px 0 }
   6.64% { background-position: -400px 0 }
-  
+
   8.30% { background-position: -500px 0 }
   9.96% { background-position: 0 -100px }
   11.62% { background-position: -100px -100px }
   13.28% { background-position: -200px -100px }
   14.94% { background-position: -300px -100px }
-  
+
   /* 11~ */
   16.60% { background-position: -400px -100px }
   18.26% { background-position: -500px -100px }
   19.92% { background-position: 0 -200px }
   21.58% { background-position: -100px -200px }
   23.24% { background-position: -200px -200px }
-  
+
   24.90% { background-position: -300px -200px }
   26.65% { background-position: -400px -200px }
   28.22% { background-position: -500px -200px }
   29.88% { background-position: 0 -300px }
   31.54% { background-position: -100px -300px }
-  
+
   /* 21~ */
   33.20% { background-position: -200px -300px }
   34.86% { background-position: -300px -300px }
   36.52% { background-position: -400px -300px }
   38.18% { background-position: -500px -300px }
   39.84% { background-position: 0 -400px }
-  
+
   41.50% { background-position: -100px -400px }
   43.16% { background-position: -200px -400px }
   44.82% { background-position: -300px -400px }
   46.48% { background-position: -400px -400px }
   48.14% { background-position: -500px -400px }
-  
+
   /* 31~ */
   49.80% { background-position: 0 -500px }
   51.46% { background-position: -100px -500px }
   53.12% { background-position: -200px -500px }
   54.78% { background-position: -300px -500px }
   56.44% { background-position: -400px -500px }
-  
+
   58.10% { background-position: -500px -500px }
   59.76% { background-position: 0 -600px }
   61.42% { background-position: -100px -600px }
   63.08% { background-position: -200px -600px }
   64.74% { background-position: -300px -600px }
-  
+
   /* 41~ */
   66.40% { background-position: -400px -600px }
   68.06% { background-position: -500px -600px }
   69.72% { background-position: 0 -700px }
   71.38% { background-position: -100px -700px }
   73.04% { background-position: -200px -700px }
-  
+
   74.70% { background-position: -300px -700px }
   76.36% { background-position: -400px -700px }
   78.02% { background-position: -500px -700px }
   79.68% { background-position: 0 -800px }
   81.34% { background-position: -100px -800px }
-  
+
   /* 51 */
   83.00% { background-position: -200px -800px }
   84.66% { background-position: -300px -800px }
   86.32% { background-position: -400px -800px }
   87.98% { background-position: -500px -800px }
   89.64% { background-position: 0 -900px }
-  
+
   91.30% { background-position: -100px -900px }
   92.96% { background-position: -200px -900px }
   94.62% { background-position: -300px -900px }
