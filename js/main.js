@@ -69,6 +69,7 @@ function hideSearch() {
   headerMenuEls.reverse().forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / headerMenuEls.length}s`
   })
+  textFieldInputEl.value = '' // 입력값 초기화
   playScroll()
 }
 function playScroll() {
@@ -99,6 +100,7 @@ const menuStarterEl = document.querySelector('header .menu-starter')
 menuStarterEl.addEventListener('click', () => {
   if (headerEl.classList.contains('menuing')) {
     headerEl.classList.remove('menuing')
+    textFieldInputEl.value = ''
     playScroll()
   } else {
     headerEl.classList.add('menuing')
@@ -194,7 +196,7 @@ ipads.forEach(ipad => {
   ipad.colors.forEach(color => {
     colorList += `<li style="background-color: ${color};"></li>`
   })
-  
+
   // VS Code 확장 프로그램 - Comment tagged templates
   itemEl.innerHTML = /* html */ `
     <div class="thumbnail">
