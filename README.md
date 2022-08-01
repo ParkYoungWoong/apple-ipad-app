@@ -193,7 +193,7 @@ export default [
 
 여러 이미지를 한 이미지로 합쳐 관리하는 방식을 **이미지 스프라이트 기법** 이라고 합니다.
 
-![이미지 스프라이트](./images/sprite_apps)
+![이미지 스프라이트](./images/sprite_apps.png)
 
 ```css
 @keyframes sprite-icon {
