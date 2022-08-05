@@ -3,12 +3,12 @@ import navigations from '../data/navigations.js'
 
 
 // 장바구니!
-const basketEl = document.querySelector('header .basket')
+// 장바구니 관련 요소 찾기.
 const basketStarterEl = document.querySelector('header .basket-starter')
+const basketEl = basketStarterEl.querySelector('.basket')
 
-// 이벤트 청취
 basketStarterEl.addEventListener('click', event => {
-  event.stopPropagation() // 이벤트 버블링 정지!
+  event.stopPropagation() // 이벤트 버블링 정지! - 버튼을 클릭했을 때 드롭다운 메뉴가 나타나야 함.
   if (basketEl.classList.contains('show')) {
     hideBasket()
   } else {
@@ -16,12 +16,14 @@ basketStarterEl.addEventListener('click', event => {
   }
 })
 basketEl.addEventListener('click', event => {
-  event.stopPropagation()
+  event.stopPropagation() // 이벤트 버블링 정지! - 드롭다운 메뉴 영역을 클릭했을 때 메뉴가 사라지지 않아야 함.
 })
+// 화면 전체를 클릭했을 때 메뉴가 사라짐.
 window.addEventListener('click', () => {
   hideBasket()
 })
 
+// 특정 로직을 직관적인 함수 이름으로 묶음.
 function showBasket() {
   basketEl.classList.add('show')
 }
@@ -31,21 +33,22 @@ function hideBasket() {
 
 
 // 헤더 검색!
+// 헤더 검색 관련 요소 찾기.
 const headerEl = document.querySelector('header')
 const headerMenuEls = [...headerEl.querySelectorAll('ul.menu > li')]
 const searchWrapEl = headerEl.querySelector('.search-wrap')
 const searchStarterEl = headerEl.querySelector('.search-starter')
 const searchShadowEl = searchWrapEl.querySelector('.shadow')
-const searchCloseerEl = searchWrapEl.querySelector('.search-closer')
+const searchCloserEl = searchWrapEl.querySelector('.search-closer')
 const searchCancel = searchWrapEl.querySelector('.search-cancel')
-const textFieldEl = searchWrapEl.querySelector('.textfield')
-const textFieldInputEl = textFieldEl.querySelector('input')
+const searchTextFieldEl = searchWrapEl.querySelector('.textfield')
+const searchInputEl = searchWrapEl.querySelector('input')
 const searchDelayEls = [...searchWrapEl.querySelectorAll('li')]
-const duration = .4 // seconds
+const duration = .4 // 초(seconds) 단위
 
 searchStarterEl.addEventListener('click', showSearch)
-searchCloseerEl.addEventListener('click', event => {
-  event.stopPropagation() // 이 클릭 이벤트가 버블링되어 textFieldEl가 클릭되는 것(모바일)을 방지
+searchCloserEl.addEventListener('click', event => {
+  event.stopPropagation() // 데스크탑 레이아웃에서 클릭 이벤트가 버블링되어, 모바일 레이아웃에서 searchTextFieldEl가 클릭된 상태로 변하는 것을 방지
   hideSearch()
 })
 searchShadowEl.addEventListener('click', hideSearch)
@@ -55,12 +58,13 @@ function showSearch() {
   headerMenuEls.reverse().forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / headerMenuEls.length}s` // 순서 * 지연 시간 / 애니메이션할 요소 개수
   })
+  // .reverse() 사용하지 않고 원래 순서대로 반복 처리.
   searchDelayEls.forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / searchDelayEls.length}s`
   })
   // 검색 인풋 요소가 나타난 후 동작!
   setTimeout(() => {
-    textFieldInputEl.focus()
+    searchInputEl.focus()
   }, 600);
   stopScroll()
 }
@@ -69,38 +73,37 @@ function hideSearch() {
   headerMenuEls.reverse().forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / headerMenuEls.length}s`
   })
-  textFieldInputEl.value = '' // 입력값 초기화
+  searchDelayEls.reverse().forEach((el, index) => {
+    el.style.transitionDelay = `${index * duration / searchDelayEls.length}s`
+  })
+  searchDelayEls.reverse() // 나타날 때 원래의 순서대로 처리해야 하기 때문에 다시 뒤집어서 순서 돌려놓기!
+  searchInputEl.value = '' // 입력값 초기화
   playScroll()
 }
 function playScroll() {
   // documentElement is <html>
-  document.documentElement.style.position = 'static'
-  document.documentElement.style.overflowY = 'visible'
-  document.documentElement.style.width = 'auto'
+  document.documentElement.classList.remove('fixed')
 }
 function stopScroll() {
-  document.documentElement.style.position = 'fixed'
-  document.documentElement.style.overflowY = 'scroll'
-  document.documentElement.style.width = '100%'
+  document.documentElement.classList.add('fixed')
 }
 
-
-// 헤더 검색 모바일!
-textFieldEl.addEventListener('click', () => {
+// 헤더 검색! [모바일]
+searchTextFieldEl.addEventListener('click', () => {
   headerEl.classList.add('searching--mobile')
-  textFieldInputEl.focus()
+  searchInputEl.focus()
 })
 searchCancel.addEventListener('click', () => {
   headerEl.classList.remove('searching--mobile')
 })
 
 
-// 헤더 메뉴 토글 모바일!
+// 헤더 메뉴 토글! [모바일]
 const menuStarterEl = document.querySelector('header .menu-starter')
 menuStarterEl.addEventListener('click', () => {
   if (headerEl.classList.contains('menuing')) {
     headerEl.classList.remove('menuing')
-    textFieldInputEl.value = ''
+    searchInputEl.value = ''
     playScroll()
   } else {
     headerEl.classList.add('menuing')
@@ -109,7 +112,7 @@ menuStarterEl.addEventListener('click', () => {
 })
 
 
-// 네비게이션 메뉴 토글 모바일!
+// 네비게이션 메뉴 토글! [모바일]
 const navEl = document.querySelector('nav')
 const navMenuTogglerEl = navEl.querySelector('.menu-toggler')
 const navMenuShadowEl = navEl.querySelector('.shadow')
