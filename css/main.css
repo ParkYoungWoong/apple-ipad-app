@@ -1065,8 +1065,10 @@ main {
 }
 /* Power / Arcade */
 .power .arcade {
-  height: 600px;
   margin-top: 55px;
+}
+.power .arcade .figures {
+  height: 600px;
 }
 .power .arcade figure {
   transform: translate(-347px, -90px);
@@ -1079,8 +1081,10 @@ main {
 }
 /* Power / Create */
 .power .create {
-  height: 772px;
   margin-top: 55px;
+}
+.power .create .figures {
+  height: 772px;
 }
 .power .create figure {
   transform: translate(-25px, 50px);
