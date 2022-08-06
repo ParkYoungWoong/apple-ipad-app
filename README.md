@@ -58,6 +58,31 @@ Apple SF Pro 폰트는 공유 및 배포할 수 없기 때문에,
 <meta property="twitter:url" content="https://www.apple.com/kr/ipad-10.2/" />
 ```
 
+### CSS 변수
+
+`--`로 시작하는 변수를 선언해 값을 할당할 수 있습니다.
+변수가 선언된 선택자 요소를 포함해 하위 요소에서 `var()` 함수를 통해 사용할 수 있습니다.
+
+```css
+html {
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-font: #1D1D1D;
+  --color-font-darkgray: #6E6E6E;
+  --color-font-middlegray: #b7b7b7;
+  --color-font-lightgray: #F5F5F5;
+  --color-link: #0071E3;
+  --color-link-focus: #81B9F1;
+  --color-border: #D2D2D2;
+  --color-header: #3A3A3A;
+  --color-section: #F5F5F5;
+  --color-shadow: rgba(0, 0, 0, .4);
+}
+.example {
+  background-color: var(--color-font);
+}
+```
+
 ### iPad 종류
 
 ```js
