@@ -58,9 +58,19 @@ Apple SF Pro 폰트는 공유 및 배포할 수 없기 때문에,
 <meta property="twitter:url" content="https://www.apple.com/kr/ipad-10.2/" />
 ```
 
+### Hero Contents 가격 요소
+
+원화 단위 입력이 어려운 경우 복사하세요!
+
+```html
+<p class="pricing">
+  ₩449,000부터
+</p>
+```
+
 ### CSS 변수
 
-`--`로 시작하는 변수를 선언해 값을 할당할 수 있습니다.
+`--`로 시작하는 변수를 선언해 값을 할당할 수 있습니다.  
 변수가 선언된 선택자 요소를 포함해 하위 요소에서 `var()` 함수를 통해 사용할 수 있습니다.
 
 ```css
