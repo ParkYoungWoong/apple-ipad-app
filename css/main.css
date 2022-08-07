@@ -166,7 +166,6 @@ a.link::after {
 
 /* Infos */
 .infos {
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -482,7 +481,7 @@ header .search .search-icon {
   top: 0;
   left: 0;
 }
-header .search .search-close-btn {
+header .search .search-closer {
   width: 40px;
   height: var(--header-height);
   background-image: url("../images/header_close.svg");
@@ -494,10 +493,10 @@ header .search .search-close-btn {
   right: 0;
   cursor: pointer;
 }
-header .search .search-close-btn:hover {
+header .search .search-closer:hover {
   opacity: 1;
 }
-header .search .search-cancel-btn {
+header .search .search-canceler {
   display: none;
 }
 header .search .autocompletes {
@@ -611,10 +610,10 @@ header.searching .search .autocompletes li {
     background-color: #1D1D1D;
     transition: .4s;
   }
-  header .search .search-close-btn {
+  header .search .search-closer {
     display: none;
   }
-  header .search .search-cancel-btn {
+  header .search .search-canceler {
     height: var(--header-height);
     display: flex;
     align-items: center;
@@ -730,7 +729,7 @@ header.searching .search .autocompletes li {
   header.menuing.searching--mobile .search .textfield {
     width: calc(100% - 55px);
   }
-  header.menuing.searching--mobile .search .search-cancel-btn {
+  header.menuing.searching--mobile .search .search-canceler {
     visibility: visible;
     opacity: 1;
   }
@@ -2604,83 +2603,75 @@ footer .legal ul li:hover a {
 
 
 @keyframes sprite-icon {
-  /* 1~ */
+  /* 1~10 */
   0.00% { background-position: 0 0 }
-  1.66% { background-position: -100px 0 }
-  3.32% { background-position: -200px 0 }
-  4.98% { background-position: -300px 0 }
-  6.64% { background-position: -400px 0 }
+  1.67% { background-position: -100px 0 }
+  3.33% { background-position: -200px 0 }
+  5.00% { background-position: -300px 0 }
+  6.67% { background-position: -400px 0 }
+  8.33% { background-position: -500px 0 }
+  10.00% { background-position: 0 -100px }
+  11.67% { background-position: -100px -100px }
+  13.33% { background-position: -200px -100px }
+  15.00% { background-position: -300px -100px }
 
-  8.30% { background-position: -500px 0 }
-  9.96% { background-position: 0 -100px }
-  11.62% { background-position: -100px -100px }
-  13.28% { background-position: -200px -100px }
-  14.94% { background-position: -300px -100px }
+  /* 11~20 */
+  16.67% { background-position: -400px -100px }
+  18.33% { background-position: -500px -100px }
+  20.00% { background-position: 0 -200px }
+  21.67% { background-position: -100px -200px }
+  23.33% { background-position: -200px -200px }
+  25.00% { background-position: -300px -200px }
+  26.67% { background-position: -400px -200px }
+  28.33% { background-position: -500px -200px }
+  30.00% { background-position: 0 -300px }
+  31.67% { background-position: -100px -300px }
 
-  /* 11~ */
-  16.60% { background-position: -400px -100px }
-  18.26% { background-position: -500px -100px }
-  19.92% { background-position: 0 -200px }
-  21.58% { background-position: -100px -200px }
-  23.24% { background-position: -200px -200px }
+  /* 21~30 */
+  33.33% { background-position: -200px -300px }
+  35.00% { background-position: -300px -300px }
+  36.67% { background-position: -400px -300px }
+  38.33% { background-position: -500px -300px }
+  40.00% { background-position: 0 -400px }
+  41.67% { background-position: -100px -400px }
+  43.33% { background-position: -200px -400px }
+  45.00% { background-position: -300px -400px }
+  46.67% { background-position: -400px -400px }
+  48.33% { background-position: -500px -400px }
 
-  24.90% { background-position: -300px -200px }
-  26.65% { background-position: -400px -200px }
-  28.22% { background-position: -500px -200px }
-  29.88% { background-position: 0 -300px }
-  31.54% { background-position: -100px -300px }
+  /* 31~40 */
+  50.00% { background-position: 0 -500px }
+  51.67% { background-position: -100px -500px }
+  53.33% { background-position: -200px -500px }
+  55.00% { background-position: -300px -500px }
+  56.67% { background-position: -400px -500px }
+  58.33% { background-position: -500px -500px }
+  60.00% { background-position: 0 -600px }
+  61.67% { background-position: -100px -600px }
+  63.33% { background-position: -200px -600px }
+  65.00% { background-position: -300px -600px }
 
-  /* 21~ */
-  33.20% { background-position: -200px -300px }
-  34.86% { background-position: -300px -300px }
-  36.52% { background-position: -400px -300px }
-  38.18% { background-position: -500px -300px }
-  39.84% { background-position: 0 -400px }
+  /* 41~50 */
+  66.67% { background-position: -400px -600px }
+  68.33% { background-position: -500px -600px }
+  70.00% { background-position: 0 -700px }
+  71.67% { background-position: -100px -700px }
+  73.33% { background-position: -200px -700px }
+  75.00% { background-position: -300px -700px }
+  76.67% { background-position: -400px -700px }
+  78.33% { background-position: -500px -700px }
+  80.00% { background-position: 0 -800px }
+  81.67% { background-position: -100px -800px }
 
-  41.50% { background-position: -100px -400px }
-  43.16% { background-position: -200px -400px }
-  44.82% { background-position: -300px -400px }
-  46.48% { background-position: -400px -400px }
-  48.14% { background-position: -500px -400px }
-
-  /* 31~ */
-  49.80% { background-position: 0 -500px }
-  51.46% { background-position: -100px -500px }
-  53.12% { background-position: -200px -500px }
-  54.78% { background-position: -300px -500px }
-  56.44% { background-position: -400px -500px }
-
-  58.10% { background-position: -500px -500px }
-  59.76% { background-position: 0 -600px }
-  61.42% { background-position: -100px -600px }
-  63.08% { background-position: -200px -600px }
-  64.74% { background-position: -300px -600px }
-
-  /* 41~ */
-  66.40% { background-position: -400px -600px }
-  68.06% { background-position: -500px -600px }
-  69.72% { background-position: 0 -700px }
-  71.38% { background-position: -100px -700px }
-  73.04% { background-position: -200px -700px }
-
-  74.70% { background-position: -300px -700px }
-  76.36% { background-position: -400px -700px }
-  78.02% { background-position: -500px -700px }
-  79.68% { background-position: 0 -800px }
-  81.34% { background-position: -100px -800px }
-
-  /* 51 */
-  83.00% { background-position: -200px -800px }
-  84.66% { background-position: -300px -800px }
-  86.32% { background-position: -400px -800px }
-  87.98% { background-position: -500px -800px }
-  89.64% { background-position: 0 -900px }
-
-  91.30% { background-position: -100px -900px }
-  92.96% { background-position: -200px -900px }
-  94.62% { background-position: -300px -900px }
-  96.28% { background-position: -400px -900px }
-  97.94% { background-position: -500px -900px }
-
-  100.0% { background-position: 0 0; }
+  /* 51~60 */
+  83.33% { background-position: -200px -800px }
+  85.00% { background-position: -300px -800px }
+  86.67% { background-position: -400px -800px }
+  88.33% { background-position: -500px -800px }
+  90.00% { background-position: 0 -900px }
+  91.67% { background-position: -100px -900px }
+  93.33% { background-position: -200px -900px }
+  95.00% { background-position: -300px -900px }
+  96.67% { background-position: -400px -900px }
+  98.33% { background-position: -500px -900px }
 }

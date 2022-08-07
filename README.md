@@ -93,6 +93,29 @@ html {
 }
 ```
 
+### Icons
+
+```css
+.info .icon.icon--chip         { background-image: url("../images/sprite_chip.png"); }
+.info .icon.icon--faster       { background-image: url("../images/sprite_faster.png"); }
+.info .icon.icon--neural       { background-image: url("../images/sprite_neural.png"); }
+.info .icon.icon--apps         { background-image: url("../images/sprite_apps.png"); }
+.info .icon.icon--battery      { background-image: url("../images/sprite_battery.png"); }
+.info .icon.icon--display      { background-image: url("../images/sprite_display.png"); }
+.info .icon.icon--true-tone    { background-image: url("../images/sprite_true_tone.png"); }
+.info .icon.icon--center-stage { background-image: url("../images/sprite_center_stage.png"); }
+.info .icon.icon--front-camera { background-image: url("../images/sprite_front_camera.png"); }
+.info .icon.icon--back-camera  { background-image: url("../images/sprite_back_camera.png"); }
+.info .icon.icon--scan         { background-image: url("../images/sprite_scan.png"); }
+.info .icon.icon--download     { background-image: url("../images/sprite_download.png"); }
+.info .icon.icon--wifi         { background-image: url("../images/sprite_wifi.png"); }
+.info .icon.icon--lte          { background-image: url("../images/sprite_lte.png"); }
+.info .icon.icon--pencil       { background-image: url("../images/sprite_pencil.png"); }
+.info .icon.icon--keyboard     { background-image: url("../images/sprite_keyboard.png"); }
+.info .icon.icon--notes        { background-image: url("../images/sprite_notes.png"); }
+.info .icon.icon--covers       { background-image: url("../images/sprite_covers.png"); }
+```
+
 ### Sprite Icon Animation
 
 여러 이미지를 한 이미지로 합쳐 관리하는 방식을 **이미지 스프라이트 기법** 이라고 합니다.
@@ -175,7 +198,7 @@ html {
 }
 ```
 
-JS에서 각 프레임 위치 계산하기
+JS에서 각 프레임 위치 쉽게 계산하기
 
 ```js
 let x = 0

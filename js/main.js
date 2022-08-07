@@ -39,8 +39,8 @@ const headerMenuEls = [...headerEl.querySelectorAll('ul.menu > li')]
 const searchWrapEl = headerEl.querySelector('.search-wrap')
 const searchStarterEl = headerEl.querySelector('.search-starter')
 const searchShadowEl = searchWrapEl.querySelector('.shadow')
-const searchCloserEl = searchWrapEl.querySelector('.search-close-btn')
-const searchCancel = searchWrapEl.querySelector('.search-cancel-btn')
+const searchCloserEl = searchWrapEl.querySelector('.search-closer')
+const searchCancel = searchWrapEl.querySelector('.search-canceler')
 const searchTextFieldEl = searchWrapEl.querySelector('.textfield')
 const searchInputEl = searchWrapEl.querySelector('input')
 const searchDelayEls = [...searchWrapEl.querySelectorAll('li')]
@@ -142,7 +142,7 @@ function hideNavMenu() {
 
 
 // 요소의 가시성 관찰
-const infoEls = [...document.querySelectorAll('.info')]
+const infoEls = document.querySelectorAll('.info')
 const io = new IntersectionObserver(entries => {
   // entries는 `io.observe(el)`로 등록된 모든 관찰 대상 배열.
   entries.forEach(entry => {
