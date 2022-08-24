@@ -224,7 +224,6 @@ a.link::after {
   display: block;
   margin-top: 44px;
   font-size: 19.5px;
-  color: var(--color-link);
 }
 .info a:hover {
   text-decoration: underline;
@@ -1322,13 +1321,16 @@ main {
   margin-top: 303px;
 }
 /* Camera / Stage */
+.camera .stage {
+  position: relative;
+}
 .camera .stage h1 {
   width: 650px;
   height: 450px;
   background-image: url("../images/camera_headline.png");
   transform: translate(-25px, 0);
 }
-.camera .stage .infos {
+.camera .stage .info {
   position: absolute;
   top: 150px;
   right: 0;
@@ -1347,8 +1349,8 @@ main {
   -webkit-mask-image: url("../images/camera_video_mask.png");
   mask-image: url("../images/camera_video_mask.png");
 }
-.camera .stage .controller__play,
-.camera .stage .controller__pause {
+.camera .stage .controller--play,
+.camera .stage .controller--pause {
   color: var(--color-link);
   cursor: pointer;
   transform: translate(428px, -134px) rotate(-3deg);
@@ -1356,16 +1358,16 @@ main {
   align-items: center;
   gap: 8px;
 }
-.camera .stage .controller__play:hover,
-.camera .stage .controller__pause:hover {
+.camera .stage .controller--play:hover,
+.camera .stage .controller--pause:hover {
   text-decoration: underline;
 }
-.camera .stage .controller__play.hide,
-.camera .stage .controller__pause.hide {
+.camera .stage .controller--play.hide,
+.camera .stage .controller--pause.hide {
   display: none;
 }
-.camera .stage .controller__play img,
-.camera .stage .controller__pause img {
+.camera .stage .controller--play img,
+.camera .stage .controller--pause img {
   width: 20px;
   margin-top: -2px;
 }
@@ -1626,7 +1628,6 @@ main {
   transform: translate(163px, 821px);
 }
 .accessories .infos {
-  max-width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -1694,7 +1695,7 @@ main {
 .ipados h1 {
   width: 530px;
   height: 400px;
-  margin: auto;
+  margin: 0 auto;
   background-image: url("../images/ipados_headline.png");
 }
 .ipados .infos {
@@ -1863,13 +1864,13 @@ main {
   background-image: url("../images/apps_masterclass_caption.png");
   transform: translate(26px, 690px);
 }
-.apps .figure-abobe figure {
+.apps .figure-adobe figure {
   transform: translate(-515px, 85px);
 }
-.apps .figure-abobe figcaption {
+.apps .figure-adobe figcaption {
   width: 105px;
   height: 24px;
-  background-image: url("../images/apps_abobe_caption.png");
+  background-image: url("../images/apps_adobe_caption.png");
   transform: translate(544px, 514px);
 }
 .apps .figure-fantasian figure {
@@ -1927,13 +1928,13 @@ main {
   .apps .figure-masterclass figcaption {
     transform: scale(.8) translate(6px, 480px);
   }
-  .apps .figure-abobe figure {
+  .apps .figure-adobe figure {
     transform: translate(-230px, 20px);
   }
-  .apps .figure-abobe figure img {
+  .apps .figure-adobe figure img {
     width: 438px;
   }
-  .apps .figure-abobe figcaption {
+  .apps .figure-adobe figcaption {
     transform: scale(.8) translate(324px, 355px);
   }
   .apps .figure-fantasian figure {
@@ -1992,13 +1993,13 @@ main {
   .apps .figure-masterclass figcaption {
     transform: scale(.8) translate(29px, 400px);
   }
-  .apps .figure-abobe figure {
+  .apps .figure-adobe figure {
     transform: translate(-154px, -126px);
   }
-  .apps .figure-abobe figure img {
+  .apps .figure-adobe figure img {
     width: 358px;
   }
-  .apps .figure-abobe figcaption {
+  .apps .figure-adobe figcaption {
     transform: scale(.8) translate(233px, 295px);
   }
   .apps .figure-fantasian figure {
@@ -2049,9 +2050,6 @@ main {
   align-items: flex-end;
   position: relative;
   z-index: 1;
-}
-.privacy .infos a {
-  white-space: nowrap;
 }
 .privacy figure {
   transform: translate(-215px, -500px);
@@ -2188,7 +2186,7 @@ main {
 .ar .inner {
   display: flex;
 }
-.ar .description {
+.ar .inner > div {
   max-width: 410px;
   margin-top: 60px;
   margin-right: 90px;
@@ -2227,8 +2225,9 @@ main {
   background-color: var(--color-section);
   text-align: center;
 }
-.environment .icon img {
-  margin: 0 auto;
+.environment .icon {
+  margin-left: auto;
+  margin-right: auto;
 }
 .environment h1 {
   color: #03A10E;
@@ -2316,7 +2315,7 @@ main {
   background-color: lightgray;
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .1);
 }
-.compare .item .name {
+.compare .item h3.name {
   margin-bottom: 4px;
   font-size: 22px;
 }
@@ -2384,9 +2383,6 @@ footer .buy-info .icon {
   height: 56px;
   margin: 0 auto 10px;;
 }
-footer .buy-info .icon img {
-  height: 100%;
-}
 footer .buy-info h3 {
   margin-bottom: 8px;
   font-size: 18px;
@@ -2452,8 +2448,6 @@ footer .breadcrumbs a:last-child:after {
 /* Footer / Navigations */
 footer .navigations {
   margin-bottom: 40px;
-}
-footer .navigations .maps {
   height: 344px;
   display: flex;
   flex-direction: column;
@@ -2483,15 +2477,15 @@ footer .navigations .map li a {
 footer .navigations .map li a:hover {
   text-decoration: underline;
 }
-footer .shop {
+footer .how-to-shop {
   font-size: 12px;
   line-height: 1.4;
   color: var(--color-font-darkgray);
 }
-footer .shop a {
+footer .how-to-shop a {
   color: var(--color-link);
 }
-footer .shop a:hover {
+footer .how-to-shop a:hover {
   text-decoration: underline;
 }
 footer .legal {
@@ -2544,7 +2538,7 @@ footer .legal ul li:hover a {
   footer .buy-info {
     flex-wrap: wrap;
   }
-  footer .navigations .maps {
+  footer .navigations {
     height: auto;
     display: block;
   }
@@ -2604,74 +2598,74 @@ footer .legal ul li:hover a {
 
 @keyframes sprite-icon {
   /* 1~10 */
-  0.00% { background-position: 0 0 }
-  1.67% { background-position: -100px 0 }
-  3.33% { background-position: -200px 0 }
-  5.00% { background-position: -300px 0 }
-  6.67% { background-position: -400px 0 }
-  8.33% { background-position: -500px 0 }
-  10.00% { background-position: 0 -100px }
-  11.67% { background-position: -100px -100px }
-  13.33% { background-position: -200px -100px }
-  15.00% { background-position: -300px -100px }
+  0.00% { background-position: 0 0; }
+  1.67% { background-position: -100px 0; }
+  3.33% { background-position: -200px 0; }
+  5.00% { background-position: -300px 0; }
+  6.67% { background-position: -400px 0; }
+  8.33% { background-position: -500px 0; }
+  10.00% { background-position: 0 -100px; }
+  11.67% { background-position: -100px -100px; }
+  13.33% { background-position: -200px -100px; }
+  15.00% { background-position: -300px -100px; }
 
   /* 11~20 */
-  16.67% { background-position: -400px -100px }
-  18.33% { background-position: -500px -100px }
-  20.00% { background-position: 0 -200px }
-  21.67% { background-position: -100px -200px }
-  23.33% { background-position: -200px -200px }
-  25.00% { background-position: -300px -200px }
-  26.67% { background-position: -400px -200px }
-  28.33% { background-position: -500px -200px }
-  30.00% { background-position: 0 -300px }
-  31.67% { background-position: -100px -300px }
+  16.67% { background-position: -400px -100px; }
+  18.33% { background-position: -500px -100px; }
+  20.00% { background-position: 0 -200px; }
+  21.67% { background-position: -100px -200px; }
+  23.33% { background-position: -200px -200px; }
+  25.00% { background-position: -300px -200px; }
+  26.67% { background-position: -400px -200px; }
+  28.33% { background-position: -500px -200px; }
+  30.00% { background-position: 0 -300px; }
+  31.67% { background-position: -100px -300px; }
 
   /* 21~30 */
-  33.33% { background-position: -200px -300px }
-  35.00% { background-position: -300px -300px }
-  36.67% { background-position: -400px -300px }
-  38.33% { background-position: -500px -300px }
-  40.00% { background-position: 0 -400px }
-  41.67% { background-position: -100px -400px }
-  43.33% { background-position: -200px -400px }
-  45.00% { background-position: -300px -400px }
-  46.67% { background-position: -400px -400px }
-  48.33% { background-position: -500px -400px }
+  33.33% { background-position: -200px -300px; }
+  35.00% { background-position: -300px -300px; }
+  36.67% { background-position: -400px -300px; }
+  38.33% { background-position: -500px -300px; }
+  40.00% { background-position: 0 -400px; }
+  41.67% { background-position: -100px -400px; }
+  43.33% { background-position: -200px -400px; }
+  45.00% { background-position: -300px -400px; }
+  46.67% { background-position: -400px -400px; }
+  48.33% { background-position: -500px -400px; }
 
   /* 31~40 */
-  50.00% { background-position: 0 -500px }
-  51.67% { background-position: -100px -500px }
-  53.33% { background-position: -200px -500px }
-  55.00% { background-position: -300px -500px }
-  56.67% { background-position: -400px -500px }
-  58.33% { background-position: -500px -500px }
-  60.00% { background-position: 0 -600px }
-  61.67% { background-position: -100px -600px }
-  63.33% { background-position: -200px -600px }
-  65.00% { background-position: -300px -600px }
+  50.00% { background-position: 0 -500px; }
+  51.67% { background-position: -100px -500px; }
+  53.33% { background-position: -200px -500px; }
+  55.00% { background-position: -300px -500px; }
+  56.67% { background-position: -400px -500px; }
+  58.33% { background-position: -500px -500px; }
+  60.00% { background-position: 0 -600px; }
+  61.67% { background-position: -100px -600px; }
+  63.33% { background-position: -200px -600px; }
+  65.00% { background-position: -300px -600px; }
 
   /* 41~50 */
-  66.67% { background-position: -400px -600px }
-  68.33% { background-position: -500px -600px }
-  70.00% { background-position: 0 -700px }
-  71.67% { background-position: -100px -700px }
-  73.33% { background-position: -200px -700px }
-  75.00% { background-position: -300px -700px }
-  76.67% { background-position: -400px -700px }
-  78.33% { background-position: -500px -700px }
-  80.00% { background-position: 0 -800px }
-  81.67% { background-position: -100px -800px }
+  66.67% { background-position: -400px -600px; }
+  68.33% { background-position: -500px -600px; }
+  70.00% { background-position: 0 -700px; }
+  71.67% { background-position: -100px -700px; }
+  73.33% { background-position: -200px -700px; }
+  75.00% { background-position: -300px -700px; }
+  76.67% { background-position: -400px -700px; }
+  78.33% { background-position: -500px -700px; }
+  80.00% { background-position: 0 -800px; }
+  81.67% { background-position: -100px -800px; }
 
   /* 51~60 */
-  83.33% { background-position: -200px -800px }
-  85.00% { background-position: -300px -800px }
-  86.67% { background-position: -400px -800px }
-  88.33% { background-position: -500px -800px }
-  90.00% { background-position: 0 -900px }
-  91.67% { background-position: -100px -900px }
-  93.33% { background-position: -200px -900px }
-  95.00% { background-position: -300px -900px }
-  96.67% { background-position: -400px -900px }
-  98.33% { background-position: -500px -900px }
+  83.33% { background-position: -200px -800px; }
+  85.00% { background-position: -300px -800px; }
+  86.67% { background-position: -400px -800px; }
+  88.33% { background-position: -500px -800px; }
+  90.00% { background-position: 0 -900px; }
+  91.67% { background-position: -100px -900px; }
+  93.33% { background-position: -200px -900px; }
+  95.00% { background-position: -300px -900px; }
+  96.67% { background-position: -400px -900px; }
+  98.33% { background-position: -500px -900px; }
 }

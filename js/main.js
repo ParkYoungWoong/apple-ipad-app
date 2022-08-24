@@ -141,51 +141,42 @@ function hideNavMenu() {
 }
 
 
-// 요소의 가시성 관찰
-const infoEls = document.querySelectorAll('.info')
+// 요소의 가시성 관찰 로직!
 const io = new IntersectionObserver(entries => {
   // entries는 `io.observe(el)`로 등록된 모든 관찰 대상 배열.
   entries.forEach(entry => {
-     // 사라질 때.
+    // 사라질 때.
     if (!entry.isIntersecting) {
       return
     }
     entry.target.classList.add('show')
   })
-}, {
-  rootMargin: '0px 0px -50px 0px'
 })
+// 관찰할 요소들 검색
+const infoEls = document.querySelectorAll('.info')
+// 관찰 시작!
 infoEls.forEach(el => io.observe(el))
 
 
 // 비디오 재생!
 const video = document.querySelector('.stage video')
-const playBtn = document.querySelector('.stage .controller__play')
-const pauseBtn = document.querySelector('.stage .controller__pause')
-
-function played() {
-  console.log('played!')
-  playBtn.classList.add('hide')
-  pauseBtn.classList.remove('hide')
-}
-function paused() {
-  console.log('paused!')
-  playBtn.classList.remove('hide')
-  pauseBtn.classList.add('hide')
-}
+const playBtn = document.querySelector('.stage .controller--play')
+const pauseBtn = document.querySelector('.stage .controller--pause')
 
 // Google 자동 재생 정책 확인! - https://developer.chrome.com/blog/autoplay/#audiovideo-elements
-video.play()
-  .then(played)
-  .catch(paused)
+// video.play()
+//   .then(played)
+//   .catch(paused)
 
 playBtn.addEventListener('click', () => {
   video.play()
-  played()
+  playBtn.classList.add('hide')
+  pauseBtn.classList.remove('hide')
 })
 pauseBtn.addEventListener('click', () => {
   video.pause()
-  paused()
+  playBtn.classList.remove('hide')
+  pauseBtn.classList.add('hide')
 })
 
 
@@ -220,14 +211,14 @@ ipads.forEach(ipad => {
 
 
 // 푸터 내비게이션 맵 랜더링!
-const mapsEl = document.querySelector('footer .navigations .maps')
+const navigationsEl = document.querySelector('footer .navigations')
 navigations.forEach(nav => {
   const mapEl = document.createElement('div')
   mapEl.classList.add('map')
 
   let mapList = ''
   nav.maps.forEach(map => {
-    mapList += `<li>
+    mapList += /* html */ `<li>
       <a href="${map.url}">${map.name}</a>
     </li>`
   })
@@ -242,7 +233,7 @@ navigations.forEach(nav => {
     </ul>
   `
 
-  mapsEl.append(mapEl)
+  navigationsEl.append(mapEl)
 })
 
 
