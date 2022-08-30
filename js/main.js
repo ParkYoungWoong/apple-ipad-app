@@ -38,13 +38,11 @@ const headerEl = document.querySelector('header')
 const headerMenuEls = [...headerEl.querySelectorAll('ul.menu > li')]
 const searchWrapEl = headerEl.querySelector('.search-wrap')
 const searchStarterEl = headerEl.querySelector('.search-starter')
-const searchShadowEl = searchWrapEl.querySelector('.shadow')
 const searchCloserEl = searchWrapEl.querySelector('.search-closer')
-const searchCancel = searchWrapEl.querySelector('.search-canceler')
-const searchTextFieldEl = searchWrapEl.querySelector('.textfield')
+const searchShadowEl = searchWrapEl.querySelector('.shadow')
 const searchInputEl = searchWrapEl.querySelector('input')
 const searchDelayEls = [...searchWrapEl.querySelectorAll('li')]
-const duration = .4 // 초(seconds) 단위
+const duration = .4 // 초(seconds) 단위, 시간을 변수에 저장해서 사용하면 쉽게 관리 용이
 
 searchStarterEl.addEventListener('click', showSearch)
 searchCloserEl.addEventListener('click', event => {
@@ -55,6 +53,7 @@ searchShadowEl.addEventListener('click', hideSearch)
 
 function showSearch() {
   headerEl.classList.add('searching')
+  stopScroll()
   headerMenuEls.reverse().forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / headerMenuEls.length}s` // 순서 * 지연 시간 / 애니메이션할 요소 개수
   })
@@ -66,10 +65,10 @@ function showSearch() {
   setTimeout(() => {
     searchInputEl.focus()
   }, 600);
-  stopScroll()
 }
 function hideSearch() {
   headerEl.classList.remove('searching')
+  playScroll()
   headerMenuEls.reverse().forEach((el, index) => {
     el.style.transitionDelay = `${index * duration / headerMenuEls.length}s`
   })
@@ -78,7 +77,6 @@ function hideSearch() {
   })
   searchDelayEls.reverse() // 나타날 때 원래의 순서대로 처리해야 하기 때문에 다시 뒤집어서 순서 돌려놓기!
   searchInputEl.value = '' // 입력값 초기화
-  playScroll()
 }
 function playScroll() {
   // documentElement is <html>
@@ -87,16 +85,6 @@ function playScroll() {
 function stopScroll() {
   document.documentElement.classList.add('fixed')
 }
-
-// 헤더 검색! [모바일]
-searchTextFieldEl.addEventListener('click', () => {
-  headerEl.classList.add('searching--mobile')
-  searchInputEl.focus()
-})
-searchCancel.addEventListener('click', () => {
-  headerEl.classList.remove('searching--mobile')
-})
-
 
 // 헤더 메뉴 토글! [모바일]
 const menuStarterEl = document.querySelector('header .menu-starter')
@@ -111,12 +99,32 @@ menuStarterEl.addEventListener('click', () => {
   }
 })
 
+// 헤더 검색! [모바일]
+const searchTextFieldEl = document.querySelector('header .textfield')
+const searchCancelEl = document.querySelector('header .search-canceler')
+searchTextFieldEl.addEventListener('click', () => {
+  headerEl.classList.add('searching--mobile')
+  searchInputEl.focus()
+})
+searchCancelEl.addEventListener('click', () => {
+  headerEl.classList.remove('searching--mobile')
+})
+
+// 화면 크기가 달라졌을 때 검색 모드가 종료되도록 처리.
+window.addEventListener('resize', event => {
+  if (window.innerWidth <= 740) {
+    headerEl.classList.remove('searching')
+  } else {
+    headerEl.classList.remove('searching--mobile')
+  }
+})
+
 
 // 네비게이션 메뉴 토글! [모바일]
 const navEl = document.querySelector('nav')
-const navMenuTogglerEl = navEl.querySelector('.menu-toggler')
+const navMenuToggleEl = navEl.querySelector('.menu-toggler')
 const navMenuShadowEl = navEl.querySelector('.shadow')
-navMenuTogglerEl.addEventListener('click', () => {
+navMenuToggleEl.addEventListener('click', () => {
   if (navEl.classList.contains('menuing')) {
     hideNavMenu()
   } else {
@@ -126,13 +134,8 @@ navMenuTogglerEl.addEventListener('click', () => {
 navEl.addEventListener('click', event => {
   event.stopPropagation()
 })
-navMenuShadowEl.addEventListener('click', () => {
-  hideNavMenu()
-})
-window.addEventListener('click', () => {
-  hideNavMenu()
-})
-
+navMenuShadowEl.addEventListener('click', hideNavMenu)
+window.addEventListener('click', hideNavMenu)
 function showNavMenu() {
   navEl.classList.add('menuing')
 }
@@ -237,6 +240,11 @@ navigations.forEach(nav => {
 })
 
 
+// 올해 연도를 적용!
+const thisYearEl = document.querySelector('.this-year')
+thisYearEl.textContent = new Date().getFullYear()
+
+
 // 푸터 내비게이션 맵 아코디언
 const mapEls = [...document.querySelectorAll('footer .navigations .map')]
 mapEls.forEach(el => {
@@ -245,8 +253,3 @@ mapEls.forEach(el => {
     el.classList.toggle('active')
   })
 })
-
-
-// 올해 연도를 적용!
-const thisYearEl = document.querySelector('.this-year')
-thisYearEl.textContent = new Date().getFullYear()
