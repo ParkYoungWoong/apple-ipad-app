@@ -12,7 +12,7 @@
 
 강의 예제에서 사용하는 이미지와 영상 등 에셋을 다운로드합니다.
 
-[에셋 다운로드](https://github.com/ParkYoungWoong/apple-ipad-app/blob/main/assets.zip)
+[에셋 다운로드](./assets.zip)
 
 ### Reset.css
 
